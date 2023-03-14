@@ -16,7 +16,6 @@ function TextArea({ text, textParts, setTextParts }) {
         textParts.acceptedChars.length === 0 &&
         textParts.rejectedChars.length === 0
       ) {
-        console.log("ovde sam");
         return;
       }
 

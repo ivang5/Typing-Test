@@ -7,12 +7,12 @@
   width: 150px;
 }
 
-.theme-checkbox {
+.toggle-checkbox {
   opacity: 0;
   position: absolute;
 }
 
-.theme-label {
+.toggle-label {
   width: 50px;
   height: 24px;
   background-color: #111;
@@ -26,31 +26,31 @@
   cursor: pointer;
 }
 
-.theme-label img {
-  height: 16px;
-  width: 16px;
+.toggle-label img {
+  height: 18px;
+  width: 18px;
 }
 
-.theme-label img:first-child {
+.toggle-label img:first-child {
   padding-left: 4px;
   fill: green;
 }
 
-.theme-label img:nth-child(2) {
+.toggle-label img:nth-child(2) {
   padding-right: 4px;
 }
 
-.theme-ball {
-  width: 18px;
-  height: 18px;
+.toggle-ball {
+  width: 20px;
+  height: 20px;
   background-color: white;
   position: absolute;
-  top: 4px;
-  left: 5px;
+  top: 3px;
+  left: 4px;
   border-radius: 50%;
   transition: transform 0.2s linear;
 }
 
-.theme-checkbox:checked + .theme-label .theme-ball {
+.toggle-checkbox:checked + .toggle-label .toggle-ball {
   transform: translateX(24px);
 }

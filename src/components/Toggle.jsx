@@ -1,23 +1,23 @@
 import React from "react";
-import "../styles/themeToggle.css";
+import "../styles/toggle.css";
 
-function ThemeToggle({ state, setState, icons, type }) {
+function Toggle({ state, setState, icons, type }) {
   return (
-    <div className="theme-toggle">
+    <div className="toggle">
       <input
         type="checkbox"
-        className="theme-checkbox"
+        className="toggle-checkbox"
         id={type}
         defaultChecked={state}
         onChange={() => setState((prevState) => !prevState)}
       />
-      <label htmlFor={type} className="theme-label">
+      <label htmlFor={type} className="toggle-label">
         <img src={icons.first} alt="moon" />
         <img src={icons.second} alt="sun" />
-        <div className="theme-ball" />
+        <div className="toggle-ball" />
       </label>
     </div>
   );
 }
 
-export default ThemeToggle;
+export default Toggle;
