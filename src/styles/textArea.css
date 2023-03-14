@@ -4,6 +4,10 @@
 }
 
 .accepted-chars {
+  color: #44bb2c;
+}
+
+.dark-mode .accepted-chars {
   color: #69d853;
 }
 
@@ -50,9 +54,13 @@
 }
 
 .pointer {
-  border-right: 1px solid white;
+  border-right: 1px solid #000;
   display: inline;
   animation-name: example;
   animation-duration: 1.3s;
   animation-iteration-count: infinite;
+}
+
+.dark-mode .pointer {
+  border-color: #fff;
 }
