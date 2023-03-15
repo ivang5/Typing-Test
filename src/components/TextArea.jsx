@@ -1,13 +1,26 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../styles/textArea.css";
 import useEventListener from "../utils/useEventListener";
 import { IGNORE_KEYS } from "../utils/utils";
 
-function TextArea({ text, textParts, setTextParts }) {
+function TextArea({
+  text,
+  textParts,
+  setTextParts,
+  done,
+  setDone,
+  started,
+  setStarted,
+  setMistakesNum,
+}) {
   const nextCharRef = useRef(text.charAt(0));
 
+  useEffect(() => {
+    nextCharRef.current = text.charAt(0);
+  }, [text]);
+
   const detectKeyDown = (e) => {
-    if (IGNORE_KEYS.includes(e.key)) {
+    if (IGNORE_KEYS.includes(e.key) || done) {
       return;
     }
 
@@ -42,8 +55,16 @@ function TextArea({ text, textParts, setTextParts }) {
       return;
     }
 
+    if (!started) {
+      setStarted(true);
+    }
+
     if (textParts.rejectedChars.length === 0) {
       if (e.key === nextCharRef.current) {
+        if (textParts.remainingChars.length === 1) {
+          setDone(true);
+          setStarted(false);
+        }
         nextCharRef.current = textParts.remainingChars.charAt(1);
         setTextParts({
           ...textParts,
@@ -51,6 +72,7 @@ function TextArea({ text, textParts, setTextParts }) {
           remainingChars: text.substring(textParts.acceptedChars.length + 1),
         });
       } else {
+        setMistakesNum((prevState) => prevState + 1);
         setTextParts({
           ...textParts,
           rejectedChars: text.substring(

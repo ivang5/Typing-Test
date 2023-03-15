@@ -10,6 +10,7 @@ function Toggle({ state, setState, icons, type }) {
         id={type}
         defaultChecked={state}
         onChange={() => setState((prevState) => !prevState)}
+        onKeyDown={(e) => e.target.blur()}
       />
       <label htmlFor={type} className="toggle-label">
         <img src={icons.first} alt="moon" />
