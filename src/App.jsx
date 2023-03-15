@@ -34,6 +34,7 @@ function App() {
   });
   const [mistakesNum, setMistakesNum] = useState(0);
   const timeRef = useRef(0);
+  const intervalRef = useRef(null);
 
   useEffect(() => {
     setDone(false);
@@ -55,23 +56,26 @@ function App() {
   }, [language, randomNum]);
 
   useEffect(() => {
-    let interval;
-
     if (started) {
-      interval = setInterval(startTimer, 1000);
+      intervalRef.current = setInterval(startTimer, 1000);
     } else {
-      clearInterval(interval);
+      stopTimer();
     }
   }, [started]);
 
   const startTimer = () => {
-    timeRef.current += 10;
+    timeRef.current += 1;
+  };
+
+  const stopTimer = () => {
+    clearInterval(intervalRef.current);
+    intervalRef.current = null;
   };
 
   useEffect(() => {
     if (done) {
-      const time = millisToMinutesAndSeconds(timeRef.current * 100);
-      const timeInMinutes = (timeRef.current * 100) / 1000 / 60;
+      const time = millisToMinutesAndSeconds(timeRef.current * 1000);
+      const timeInMinutes = (timeRef.current * 1000) / 1000 / 60;
       const wordsNum = getNumberOfWords(text);
       const speed = wordsNum / timeInMinutes;
       const accuracy = text.length / ((text.length + mistakesNum) / 100);
@@ -81,6 +85,8 @@ function App() {
         speed: speed.toFixed(2),
         accuracy: accuracy.toFixed(2),
       });
+
+      timeRef.current = 0;
     } else {
       setReview({
         time: 0,
@@ -122,6 +128,7 @@ function App() {
         isEnglish={language}
         setRandomNum={setRandomNum}
         review={review}
+        setStarted={setStarted}
       />
     </div>
   );

@@ -9,14 +9,17 @@ import keyboardWhite from "../assets/icons/keyboard-white.svg";
 import check from "../assets/icons/check.svg";
 import checkWhite from "../assets/icons/check-white.svg";
 
-function Menu({ darkMode, isEnglish, setRandomNum, review }) {
+function Menu({ darkMode, isEnglish, setRandomNum, review, setStarted }) {
   return (
     <div className="menu">
       <div className="menu-part">
         <img
           src={darkMode ? arrowWhite : arrow}
           alt="regenerate text"
-          onClick={() => setRandomNum(Math.floor(Math.random() * 30))}
+          onClick={() => {
+            setRandomNum(Math.floor(Math.random() * 30));
+            setStarted(false);
+          }}
         />
       </div>
       <div className="menu-part">
