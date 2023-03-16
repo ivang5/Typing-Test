@@ -29,7 +29,7 @@
   border-radius: 5px;
 }
 
-@keyframes example {
+@keyframes pointer-anim {
   0% {
     opacity: 1;
   }
@@ -68,7 +68,7 @@
 .pointer {
   border-right: 1px solid #000;
   display: inline;
-  animation-name: example;
+  animation-name: pointer-anim;
   animation-duration: 1.3s;
   animation-iteration-count: infinite;
 }

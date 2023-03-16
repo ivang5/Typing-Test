@@ -55,6 +55,12 @@
   padding: 15px 60px;
 }
 
+.review-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .review-item-head {
   display: flex;
   justify-content: center;
@@ -88,4 +94,139 @@
 .review-item-value {
   font-size: 48px;
   font-weight: 600;
+}
+
+@keyframes dot-one {
+  10% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes dot-two {
+  10% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes dot-three {
+  10% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.review-item-value-loading {
+  display: flex;
+  margin-top: 33px;
+}
+
+.dot-one,
+.dot-two,
+.dot-three {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: #000;
+  opacity: 1;
+  animation-duration: 1.3s;
+  animation-iteration-count: infinite;
+}
+
+.dot-one {
+  animation-name: dot-one;
+}
+
+.dot-two {
+  margin: 0 10px;
+  animation-name: dot-two;
+}
+
+.dot-three {
+  animation-name: dot-three;
+}
+
+.dark-mode .dot-one,
+.dark-mode .dot-two,
+.dark-mode .dot-three {
+  background-color: #ffffffde;
 }

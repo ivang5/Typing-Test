@@ -9,7 +9,15 @@ import keyboardWhite from "../assets/icons/keyboard-white.svg";
 import check from "../assets/icons/check.svg";
 import checkWhite from "../assets/icons/check-white.svg";
 
-function Menu({ darkMode, isEnglish, setRandomNum, review, setStarted }) {
+function Menu({
+  darkMode,
+  isEnglish,
+  setRandomNum,
+  review,
+  started,
+  setStarted,
+  stopwatchTime,
+}) {
   return (
     <div className="menu">
       <div className="menu-part">
@@ -37,7 +45,9 @@ function Menu({ darkMode, isEnglish, setRandomNum, review, setStarted }) {
                 </span>
               </div>
             </div>
-            <span className="review-item-value">{review.time}</span>
+            <span className="review-item-value">
+              {started ? stopwatchTime : review.time}
+            </span>
           </div>
           <div className="review-item">
             <div className="review-item-head">
@@ -52,10 +62,18 @@ function Menu({ darkMode, isEnglish, setRandomNum, review, setStarted }) {
                 </span>
               </div>
             </div>
-            <span className="review-item-value">
-              {review.speed}
-              {isEnglish ? " wpm" : " rum"}
-            </span>
+            {started ? (
+              <div className="review-item-value-loading">
+                <div className="dot-one"></div>
+                <div className="dot-two"></div>
+                <div className="dot-three"></div>
+              </div>
+            ) : (
+              <span className="review-item-value">
+                {review.speed}
+                {isEnglish ? " wpm" : " rum"}
+              </span>
+            )}
           </div>
           <div className="review-item">
             <div className="review-item-head">
@@ -70,7 +88,15 @@ function Menu({ darkMode, isEnglish, setRandomNum, review, setStarted }) {
                 </span>
               </div>
             </div>
-            <span className="review-item-value">{review.accuracy}%</span>
+            {started ? (
+              <div className="review-item-value-loading">
+                <div className="dot-one"></div>
+                <div className="dot-two"></div>
+                <div className="dot-three"></div>
+              </div>
+            ) : (
+              <span className="review-item-value">{review.accuracy}%</span>
+            )}
           </div>
         </div>
       </div>

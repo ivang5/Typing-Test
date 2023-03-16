@@ -33,6 +33,7 @@ function App() {
     remainingChars: text,
   });
   const [mistakesNum, setMistakesNum] = useState(0);
+  const [stopwatchTime, setStopwatchTime] = useState(0);
   const timeRef = useRef(0);
   const intervalRef = useRef(null);
 
@@ -65,6 +66,7 @@ function App() {
 
   const startTimer = () => {
     timeRef.current += 1;
+    setStopwatchTime(millisToMinutesAndSeconds(timeRef.current * 1000));
   };
 
   const stopTimer = () => {
@@ -74,7 +76,7 @@ function App() {
 
   useEffect(() => {
     if (done) {
-      const time = millisToMinutesAndSeconds(timeRef.current * 1000);
+      const time = stopwatchTime;
       const timeInMinutes = (timeRef.current * 1000) / 1000 / 60;
       const wordsNum = getNumberOfWords(text);
       const speed = wordsNum / timeInMinutes;
@@ -85,7 +87,7 @@ function App() {
         speed: speed.toFixed(2),
         accuracy: accuracy.toFixed(2),
       });
-
+      setStopwatchTime(0);
       timeRef.current = 0;
     } else {
       setReview({
@@ -128,7 +130,9 @@ function App() {
         isEnglish={language}
         setRandomNum={setRandomNum}
         review={review}
+        started={started}
         setStarted={setStarted}
+        stopwatchTime={stopwatchTime}
       />
     </div>
   );
