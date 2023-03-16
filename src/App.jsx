@@ -54,6 +54,9 @@ function App() {
       speed: 0,
       accuracy: 0,
     });
+    timeRef.current = 0;
+    setStarted(false);
+    setStopwatchTime(0);
   }, [language, randomNum]);
 
   useEffect(() => {
