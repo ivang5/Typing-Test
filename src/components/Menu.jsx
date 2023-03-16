@@ -25,7 +25,7 @@ function Menu({
           src={darkMode ? arrowWhite : arrow}
           alt="regenerate text"
           onClick={() => {
-            setRandomNum(Math.floor(Math.random() * 30));
+            setRandomNum(Math.floor(Math.random() * 100));
             setStarted(false);
           }}
         />

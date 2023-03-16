@@ -16,7 +16,7 @@ import { getNumberOfWords, millisToMinutesAndSeconds } from "./utils/utils";
 function App() {
   const [darkMode, setDarkMode] = useDarkMode();
   const [language, setLanguage] = useLocalStorage("isEnglish", true);
-  const [randomNum, setRandomNum] = useState(Math.floor(Math.random() * 30));
+  const [randomNum, setRandomNum] = useState(Math.floor(Math.random() * 100));
   const [done, setDone] = useState(false);
   const [started, setStarted] = useState(false);
   const [review, setReview] = useState({
