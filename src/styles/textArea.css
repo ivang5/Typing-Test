@@ -68,6 +68,9 @@
 .pointer {
   border-right: 1px solid #000;
   display: inline;
+}
+
+.pointer-animation {
   animation-name: pointer-anim;
   animation-duration: 1.3s;
   animation-iteration-count: infinite;

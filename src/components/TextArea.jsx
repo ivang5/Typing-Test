@@ -102,7 +102,7 @@ function TextArea({
     <div className="text-area">
       <span className="accepted-chars">{textParts.acceptedChars}</span>
       <span className="rejected-chars">{textParts.rejectedChars}</span>
-      <span className="pointer"></span>
+      <span className={`pointer ${!started && "pointer-animation"}`}></span>
       <span className="remaining-chars">{textParts.remainingChars}</span>
     </div>
   );
